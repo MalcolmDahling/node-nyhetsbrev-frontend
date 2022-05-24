@@ -1,11 +1,13 @@
-import axios from 'axios';
-import { ChangeEvent } from 'react';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ILogin } from '../../models/ILogin';
 import './Home.scss';
+import axios from "axios";
+import { ChangeEvent } from "react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ILogin } from "../../models/ILogin";
 
 export function Home(){
+
+    const navigate = useNavigate();
 
 
     const [post, setPost] = useState<ILogin>({
@@ -13,11 +15,11 @@ export function Home(){
         password: ''
     });
 
+
     function handleChange(e:ChangeEvent<HTMLInputElement>){
         setPost({...post, [e.target.name]: e.target.value});
     }
 
-    const [loginFailed, setLoginFailed] = useState<any>('');
 
     function login(){
         axios.post('http://localhost:3000/users/login', post)
@@ -32,7 +34,7 @@ export function Home(){
                 //login successful
                 else{
                     localStorage.setItem('userID', JSON.stringify(res.data));
-                    
+                    navigate('/loggedIn');
                 }
                 
                 
@@ -42,9 +44,14 @@ export function Home(){
             });
     }
 
+
+    const [loginFailed, setLoginFailed] = useState<any>('');
+
+
+
     return(
         <>
-            <div className="formContainer">
+            <div className="loginContainer">
                 <form>
                     <h2>Login</h2>
 
@@ -52,7 +59,7 @@ export function Home(){
                     <input type="email" placeholder="Email" name="email" required onChange={handleChange} value={post.email}></input>
 
                     <label htmlFor="password">Password</label>
-                    <input type="password" placeholder="••••••••••" name="password" required onChange={handleChange} value={post.password}></input>
+                    <input type="password" placeholder="•••••" name="password" required onChange={handleChange} value={post.password}></input>
 
                     <input type="button" value="Login" onClick={login}></input>
 

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Home } from './components/Home/Home';
+import { LoggedIn } from './components/LoggedIn/LoggedIn';
 import { NotFound } from './components/NotFound/NotFound';
 import { Signup } from './components/Signup/Signup';
 import './index.scss';
@@ -16,6 +17,7 @@ root.render(
             <Routes>
                 <Route path="/" element={<Home></Home>} />
                 <Route path="/signup" element={<Signup></Signup>} />
+                <Route path="/loggedIn" element={<LoggedIn></LoggedIn>} />
                 <Route path="*" element={<NotFound></NotFound>} />
             </Routes>
         </HashRouter>
