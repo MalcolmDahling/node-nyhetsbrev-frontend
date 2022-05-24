@@ -47,7 +47,7 @@ export function Signup(){
 
     function createAccount(){
 
-        axios.post<ISignup>('http://localhost:3000/users', post)
+        axios.post<ISignup>('http://localhost:3000/users/add', post)
             .then(res => {
                 console.log(res);
 
