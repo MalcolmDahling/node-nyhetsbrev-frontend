@@ -43,6 +43,18 @@
         cursor:pointer;
     }
 
+    .checkboxLabel{
+        line-height:30px;
+        vertical-align:top;
+    }
+
+    input[type=checkbox]{
+        display:inline;
+        width:20px;
+        margin:0px;
+        margin-left:10px;
+    }
+
 
     p{
         margin:0px;

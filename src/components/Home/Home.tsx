@@ -4,10 +4,24 @@ import { ChangeEvent } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ILogin } from "../../models/ILogin";
+import { useEffect } from 'react';
 
 export function Home(){
 
     const navigate = useNavigate();
+
+
+
+    //check if already logged in.
+    useEffect(() => {
+
+        if(localStorage.getItem('userID') != null){
+            navigate('/loggedIn');
+        }
+
+    }, []);
+
+
 
 
     const [post, setPost] = useState<ILogin>({
@@ -24,7 +38,6 @@ export function Home(){
     function login(){
         axios.post('http://localhost:3000/users/login', post)
             .then(res => {
-                console.log(res.data);
 
                 //login failed
                 if(res.data == 'loginFailed'){
