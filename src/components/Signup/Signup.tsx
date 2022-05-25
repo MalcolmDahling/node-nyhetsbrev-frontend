@@ -23,8 +23,6 @@ export function Signup(){
     function handleChange(e:ChangeEvent<HTMLInputElement>){
 
         setPost({...post, [e.target.name]: e.target.value});
-        
-        console.log(post);
     }
 
 
@@ -37,8 +35,6 @@ export function Signup(){
         setCheckbox(!checkbox);
         
         setPost({...post, subscription: !checkbox});
-
-        console.log(post);
     }
 
 
@@ -47,7 +43,7 @@ export function Signup(){
 
     function createAccount(){
 
-        axios.post<ISignup>('http://localhost:3000/users/add', post)
+        axios.post<ISignup>('https://node-nyhetsbrev.herokuapp.com/users/add', post)
             .then(res => {
                 console.log(res);
 

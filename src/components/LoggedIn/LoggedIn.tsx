@@ -24,7 +24,7 @@ export function LoggedIn(){
 
     useEffect(() => {
 
-        axios.post('http://localhost:3000/users/loggedIn', {
+        axios.post('https://node-nyhetsbrev.herokuapp.com/users/loggedIn', {
             id: localStorage.getItem('userID')!.replace(/['"]+/g, '')
         })
             .then(res => {
@@ -63,7 +63,7 @@ export function LoggedIn(){
 
     function saveChanges(){
         
-        axios.put('http://localhost:3000/users/subscription', {
+        axios.put('https://node-nyhetsbrev.herokuapp.com/users/subscription', {
             email: user.email,
             subscription: user.subscription
         })

@@ -36,7 +36,7 @@ export function Home(){
 
 
     function login(){
-        axios.post('http://localhost:3000/users/login', post)
+        axios.post('https://node-nyhetsbrev.herokuapp.com/users/login', post)
             .then(res => {
 
                 //login failed
