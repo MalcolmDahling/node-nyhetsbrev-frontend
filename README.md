@@ -4,6 +4,7 @@ npm i<br>
 npm start<br>
 
 <h2>Packages used:</h2><br>
+React<br>
 @types/react<br>
 Axios<br>
 React-router-dom<br>
