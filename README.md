@@ -6,7 +6,7 @@ npm start<br>
 <h2>Packages used:</h2><br>
 React<br>
 @types/react<br>
-Axios<br>
 React-router-dom<br>
+Axios<br>
 Sass<br>
 GH-pages<br>
