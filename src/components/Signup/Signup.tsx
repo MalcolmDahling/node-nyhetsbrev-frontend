@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { FormEvent } from 'react';
 import { ChangeEvent } from 'react';
 import { ISignup } from '../../models/ISignup';
 import './Signup.scss';
@@ -41,7 +42,9 @@ export function Signup(){
 
 
 
-    function createAccount(){
+    function createAccount(e:FormEvent){
+
+        e.preventDefault();
 
         axios.post<ISignup>('https://node-nyhetsbrev.herokuapp.com/users/add', post)
             .then(res => {
@@ -66,7 +69,7 @@ export function Signup(){
     return(
         <>
             <div className="formContainer">
-                <form>
+                <form onSubmit={createAccount}>
                     <h2>Create new account</h2>
 
                     <label htmlFor="email">Email</label>
@@ -78,7 +81,7 @@ export function Signup(){
                     <label htmlFor="checkbox" className="checkboxLabel">Subscribe to newsletter</label>
                     <input type="checkbox" name="subscription" onChange={handleChangeCheckbox}></input>
 
-                    <input type="button" value="Sign Up" onClick={createAccount}></input>
+                    <input type="submit" value="Sign Up" ></input>
                 </form>
 
                 {userCreated}

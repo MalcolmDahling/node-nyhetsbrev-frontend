@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ILogin } from "../../models/ILogin";
 import { useEffect } from 'react';
+import { FormEvent } from 'react';
 
 export function Home(){
 
@@ -35,7 +36,10 @@ export function Home(){
     }
 
 
-    function login(){
+    function login(e:FormEvent){
+
+        e.preventDefault();
+
         axios.post('https://node-nyhetsbrev.herokuapp.com/users/login', post)
             .then(res => {
 
@@ -65,7 +69,7 @@ export function Home(){
     return(
         <>
             <div className="loginContainer">
-                <form>
+                <form onSubmit={login}>
                     <h2>Login</h2>
 
                     <label htmlFor="email">Email</label>
@@ -74,7 +78,7 @@ export function Home(){
                     <label htmlFor="password">Password</label>
                     <input type="password" placeholder="•••••" name="password" required onChange={handleChange} value={post.password}></input>
 
-                    <input type="button" value="Login" onClick={login}></input>
+                    <input type="submit" value="Login"></input>
 
                     {loginFailed}
                 </form>
